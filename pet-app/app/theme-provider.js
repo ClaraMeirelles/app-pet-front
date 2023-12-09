@@ -1,7 +1,6 @@
 "use client";
 
 import { createTheme } from "@mui/material";
-// import { createTheme } from "@mui/system";
 
 export const theme = createTheme({
 
@@ -14,9 +13,9 @@ export const theme = createTheme({
       // contrastText: será calculada para contrastar com palette.primary.main
     },
     secondary: {
-      light: '#0066ff',
-      main: '#0044ff',
-      dark: "#0044ff",
+      // light: '#0066ff',
+      main: '#5BCF7A',
+      // dark: "#0044ff",
       // dark: será calculada com base palette.secondary.main,
       contrastText: '#ffcc00',
     },

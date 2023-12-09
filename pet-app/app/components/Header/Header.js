@@ -7,10 +7,10 @@ import { useRouter } from 'next/navigation';
 const color = "#612096"
 export default function Header() {
   const router = useRouter()
-  
+
   return (
 
-    <Box sx={{ flexGrow: 1 }}>
+    <Box >
       <AppBar position="static">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
@@ -29,6 +29,5 @@ export default function Header() {
         </Toolbar>
       </AppBar>
     </Box>
-    //  <>cabeçalho bonito</>
   );
 }
