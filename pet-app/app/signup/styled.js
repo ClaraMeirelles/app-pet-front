@@ -9,10 +9,8 @@ export const StyledPage = styled.main`
   display: flex;
   flex-direction: column;
   /* background-size: 100%; */
-  background-image: url('../../public/img/paws.png');
-
 `
-export const StyledLogin = styled.section`
+export const StyledSignup = styled.section`
   display: flex;
   flex-direction: column;
   gap: 16px;

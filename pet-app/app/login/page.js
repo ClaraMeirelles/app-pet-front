@@ -25,7 +25,7 @@ export default function Login() {
             placeholder='seu@email.com' type="email" label={"Email:"} focused required />
           <TextField type="password" label={"Senha:"} required />
           <MainButton title="Login" type="submit" />
-          <SecondaryButton title="Ainda não tem conta? Clique aqui!" />
+          <a href="../signup" > <SecondaryButton title="Ainda não tem conta? Clique aqui!" /></a>
         </FormControl >
       </StyledLogin>
     </StyledPage>
