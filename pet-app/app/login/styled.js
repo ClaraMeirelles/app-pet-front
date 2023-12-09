@@ -23,7 +23,10 @@ export const StyledLogin = styled.section`
   color:${(props) => props.theme === "light" ? "#171618" : "#f4eefa"};
   background-color:${(props) => props.theme === "light" ? "white" : "#171618"};
 `
-
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+`
 export const StyledHeading = styled.h1`
   font-family: 'Bungee Shade', sans-serif;
   font-size: 3rem;

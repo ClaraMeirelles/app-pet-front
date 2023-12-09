@@ -22,10 +22,10 @@ export const StyledSignup = styled.section`
   background-color:${(props) => props.theme === "light" ? "white" : "#171618"};
 `
 
-export const StyledHeading = styled.h1`
-  font-family: 'Bungee Shade', sans-serif;
-  font-size: 3rem;
-  color: ${theme.palette.secondary.main};
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap:16px;
 `
 
 export const StyledTextField = styled(TextField)`
