@@ -1,5 +1,5 @@
 "use client";
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import MainButton from '../ui/Buttons/MainButton/MainButton'
 import { StyledHeading, StyledLogin, StyledPage, StyledTextField } from './styled';
 import { FormControl, TextField } from '@mui/material';
@@ -8,10 +8,17 @@ import SecondaryButton from '../ui/Buttons/SecondaryButton/SecondaryButton';
 import { Title } from '@mui/icons-material';
 
 export default function Login() {
+  const [theme, setTheme] = useState('light'); // Pode ser 'light' ou 'dark'
+
+  const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  useEffect(() => {
+    setTheme(prefersDarkMode ? 'dark' : 'light');
+  }, [prefersDarkMode]);
+
   return (
     <StyledPage>
       <Header />
-      <StyledLogin>
+      <StyledLogin theme={theme}>
         <section>
           <h4>Boas vindas ao</h4>
           <StyledHeading>NOME DO APP</StyledHeading>
