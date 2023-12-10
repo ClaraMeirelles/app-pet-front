@@ -22,15 +22,15 @@ export default function Login() {
     console.log('Submit', form)
   }
   return (
-    <StyledPage >
+    <StyledPage theme={theme}>
       <Header />
-      <StyledLogin theme={theme}>
+      <StyledLogin >
         <section>
           <h4>Boas vindas ao</h4>
           <StyledHeading>NOME DO APP</StyledHeading>
         </section>
         <StyledForm onSubmit={submitForm}>
-          <TextField onChange={setForm} name="email" value={form.email} placeholder='seu@email.com' type="email" label={"Email:"} focused required />
+          <TextField onChange={setForm} name="email" value={form.email} placeholder='seu@email.com' type="email" label={"Email:"} required />
           <TextField onChange={setForm} name="password" value={form.password} type="password" label={"Senha:"} required />
           <Button title="Login" type="submit" variant="contained" >Login</Button>
           <a href="../signup" > <SecondaryButton title="Ainda não tem conta? Clique aqui!" /></a>
