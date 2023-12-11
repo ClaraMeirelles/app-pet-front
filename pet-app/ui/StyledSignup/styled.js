@@ -1,6 +1,6 @@
 import { TextField } from "@mui/material";
 import styled from "styled-components";
-import { theme } from "../theme-provider";
+import { theme } from "../../app/theme-provider";
 //simplesmente não carrega a imagem pro bg
 // import bgImage from "../../public/img/paws.png"
 export const StyledPage = styled.main`
@@ -32,21 +32,40 @@ export const StyledSignup = styled.section`
   background-size: 80%;
   background-position-x: 140%;
   background-position-y: 115%;
+  
   @media screen and (min-device-width: 750px) {
     background-position: center bottom;
     background-size: 40%;
     font-size:4rem;
+  
   }
 `
 
 export const StyledForm = styled.form`
-  display: flex;
+   display: flex;
   flex-direction: column;
   gap:16px;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+  gap:16px;
+
+  border-radius:16px;
+  padding: 16px;
+  div{
+    *{
+    color: #612096;
+  }}
+  input{
+    color: #c1bac7;
+    width: 70vw;
+    max-width: 400px;
+    border: 1px solid #612096;
+    border-radius:6px;
+    &:focus{
+      border: 0;
+    }
+  }
 `
 
-export const StyledTextField = styled(TextField)`
-  color: #FFFFFF;
-  width: 90vw;
-  max-width: 400px;
-`
+
