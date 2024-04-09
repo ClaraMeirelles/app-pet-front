@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useLayoutEffect, useState } from 'react'
 import { StyledSignup, StyledPage, StyledForm } from '../../ui/StyledPetRegistration/styled';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import Header from "../../components/Header/Header";
@@ -7,7 +7,8 @@ import SecondaryButton from '../../ui/Buttons/SecondaryButton/SecondaryButton';
 import { useForm } from '../../hooks/useForm';
 import { AddVaccines } from '../../components/AddVaccines/AddVaccines';
 import { Vaccines } from '../../components/Vaccines/Vaccines';
-export default function Signup() {
+
+export default function PetRegistration() {
   const [theme, setTheme] = useState('dark'); // Pode ser 'light' ou 'dark' 
   const [edit, setEdit] = useState(false);
   const [petId, setPetId] = useState("")
@@ -21,7 +22,7 @@ export default function Signup() {
   })
 
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(prefersDarkMode ? 'dark' : 'light');
     const petIdStorage = window.localStorage.getItem("pet-id")
