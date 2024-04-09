@@ -27,6 +27,8 @@ export const StyledSignup = styled.section`
   background-size: 30%;
   background-position-x: 140%;
   background-position-y: 115%;
+  min-height: fit-content;
+  overflow-x: scroll;
   
   @media screen and (min-device-width: 750px) {
     background-position: right bottom;

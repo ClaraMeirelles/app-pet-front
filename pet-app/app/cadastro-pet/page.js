@@ -6,6 +6,7 @@ import Header from "../../components/Header/Header";
 import SecondaryButton from '../../ui/Buttons/SecondaryButton/SecondaryButton';
 import { useForm } from '../../hooks/useForm';
 import { AddVaccines } from '../../components/AddVaccines/AddVaccines';
+import { Vaccines } from '../../components/Vaccines/Vaccines';
 export default function Signup() {
   const [theme, setTheme] = useState('dark'); // Pode ser 'light' ou 'dark' 
   const [edit, setEdit] = useState(false);
@@ -118,7 +119,9 @@ export default function Signup() {
                 required
                 autoFocus
               />
-              {addVaccines && <AddVaccines />}
+              {addVaccines && <>
+                <Vaccines />
+                <AddVaccines /></>}
               <Button onClick={() => { setAddVaccines(!addVaccines) }}>Adicionar vacinas</Button>
             </>
 
