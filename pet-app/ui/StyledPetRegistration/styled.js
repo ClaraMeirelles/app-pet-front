@@ -13,14 +13,13 @@ export const StyledSignup = styled.section`
   gap: 16px;
   padding: 16px;
   flex-grow: 1;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-evenly;
   display: flex;
   flex-direction: column;
   gap: 16px;
   padding: 16px;
   flex-grow: 1;
-  align-items: center;
   justify-content: space-evenly;
   background-image: url('/img/paws-bg.png');
   background-repeat: no-repeat;
@@ -43,25 +42,20 @@ export const StyledForm = styled.form`
   gap:16px;
   display: flex;
   flex-direction: column;
-  align-items:center;
+  max-width: 60vw;
   gap:16px;
-
+align-self: center;
   border-radius:16px;
   padding: 16px;
   div{
     *{
     color: #612096;
   }}
-  input, select{
-    color: #c1bac7;
-    width: 70vw;
-    max-width: 400px;
-    border: 1px solid #612096;
-    border-radius:6px;
-    &:focus{
-      border: 0;
-    }
+
+  @media screen and (max-device-width: 900px){
+    max-width: 95vw;
+    align-items: center;
   }
-`
+  `
 
 

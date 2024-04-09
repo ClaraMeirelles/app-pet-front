@@ -5,9 +5,12 @@ import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@m
 import Header from "../../components/Header/Header";
 import SecondaryButton from '../../ui/Buttons/SecondaryButton/SecondaryButton';
 import { useForm } from '../../hooks/useForm';
-
+import { AddVaccines } from '../../components/AddVaccines/AddVaccines';
 export default function Signup() {
-  const [theme, setTheme] = useState('dark'); // Pode ser 'light' ou 'dark'
+  const [theme, setTheme] = useState('dark'); // Pode ser 'light' ou 'dark' 
+  const [edit, setEdit] = useState(false);
+  const [petId, setPetId] = useState("")
+  const [addVaccines, setAddVaccines] = useState(false)
   const [form, setForm] = useForm({
     name: "",
     dateOfBirth: "",
@@ -16,10 +19,18 @@ export default function Signup() {
     other: ""
   })
 
+
   useEffect(() => {
     const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(prefersDarkMode ? 'dark' : 'light');
+    const petIdStorage = window.localStorage.getItem("pet-id")
+    console.log(petIdStorage)
+    setPetId(petIdStorage)
+    if (petIdStorage) {
+      setEdit(true)
+    }
   }, []);
+  window.localStorage.setItem("pet-id", "asdf123")
   const submitForm = (e) => {
     e.preventDefault()
     let formSubmit = { ...form }
@@ -29,13 +40,33 @@ export default function Signup() {
     }
     console.log('Submit', formSubmit)
   }
+  console.log(({ edit }))
   return (
     <StyledPage theme={theme}>
       <Header />
       <StyledSignup theme={theme}>
         <StyledForm onSubmit={submitForm} theme={theme}>
-          <TextField color="secondary" variant="filled" value={form.name} onChange={setForm} name="name" type="text" label={"Nome:"} required autoFocus />
-          <TextField color="secondary" variant="filled" value={form.dateOfBirth} onChange={setForm} name="dateOfBirth" type="date" label={"Nascimento:"} required />
+          <TextField
+            color="secondary"
+            variant="filled"
+            value={form.name}
+            onChange={setForm}
+            name="name"
+            type="text"
+            label={"Nome:"}
+            required
+            autoFocus
+          />
+          <TextField
+            color="secondary"
+            variant="filled"
+            value={form.dateOfBirth}
+            onChange={setForm}
+            name="dateOfBirth"
+            type="date"
+            label={"Nascimento:"}
+            required
+          />
           <FormControl sx={{ minWidth: 120 }} >
             <InputLabel id="demo-simple-select-label" >Espécie</InputLabel>
             <Select
@@ -53,13 +84,51 @@ export default function Signup() {
             </Select>
           </FormControl>
           {form.species === "other" &&
-            <TextField color="secondary" variant="filled" value={form.other} onChange={setForm} name="other" type="text" label={"Digite a espécie:"} required autoFocus />
+            <TextField
+              color="secondary"
+              variant="filled"
+              value={form.other}
+              onChange={setForm}
+              name="other"
+              type="text"
+              label={"Digite a espécie:"}
+              required
+              autoFocus
+            />
           }
-          <TextField color="secondary" variant="filled" value={form.breed} onChange={setForm} name="breed" type="text" label={"Raça:"} />
-          <Button type="submit" variant='contained' >Adicionar Pet</Button>
-          <a href="../login" >
-            <SecondaryButton title="Voltar para meus pets" />
-          </a>
+          <TextField
+            color="secondary"
+            variant="filled"
+            value={form.breed}
+            onChange={setForm}
+            name="breed"
+            type="text"
+            label={"Raça:"}
+          />
+          {edit &&
+            <>
+              <TextField
+                color="secondary"
+                variant="filled"
+                value={form.weight}
+                onChange={setForm}
+                name="weight"
+                type="text"
+                label={"Digite o peso:"}
+                required
+                autoFocus
+              />
+              {addVaccines && <AddVaccines />}
+              <Button onClick={() => { setAddVaccines(!addVaccines) }}>Adicionar vacinas</Button>
+            </>
+
+          }
+          <>
+            <Button type="submit" variant='contained'>{edit ? "Salvar alterações" : "Adicionar Pet"}</Button>
+            <a href="../login" >
+              <SecondaryButton title="Voltar para meus pets" />
+            </a>
+          </>
         </StyledForm>
       </StyledSignup>
     </StyledPage>
