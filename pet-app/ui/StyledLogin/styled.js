@@ -35,6 +35,8 @@ export const StyledLogin = styled.section`
   background-size: 80%;
   background-position-x: 140%;
   background-position-y: 115%;
+  min-height: fit-content;
+  overflow-x: scroll;
   
   @media screen and (min-device-width: 750px) {
     background-position: center bottom;
