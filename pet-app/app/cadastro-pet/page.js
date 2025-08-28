@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useLayoutEffect, useState } from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import { StyledSignup, StyledPage, StyledForm } from '../../ui/StyledPetRegistration/styled';
 import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@mui/material';
 import Header from "../../components/Header/Header";
@@ -7,7 +7,10 @@ import SecondaryButton from '../../ui/Buttons/SecondaryButton/SecondaryButton';
 import { useForm } from '../../hooks/useForm';
 import { AddVaccines } from '../../components/AddVaccines/AddVaccines';
 import { Vaccines } from '../../components/Vaccines/Vaccines';
+import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
+import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs'
 export default function PetRegistration() {
   const [theme, setTheme] = useState('dark'); // Pode ser 'light' ou 'dark' 
   const [edit, setEdit] = useState(false);
@@ -15,7 +18,7 @@ export default function PetRegistration() {
   const [addVaccines, setAddVaccines] = useState(false)
   const [form, setForm] = useForm({
     name: "",
-    dateOfBirth: "",
+    // dateOfBirth: "",
     species: "",
     breed: "",
     other: ""
@@ -52,14 +55,14 @@ export default function PetRegistration() {
             color="secondary"
             variant="filled"
             value={form.name}
-            onChange={setForm}
+            onChange={(e) => setForm(e)}
             name="name"
             type="text"
             label={"Nome:"}
             required
             autoFocus
           />
-          <TextField
+          {/* <TextField
             color="secondary"
             variant="filled"
             value={form.dateOfBirth}
@@ -68,7 +71,22 @@ export default function PetRegistration() {
             type="date"
             label={"Nascimento:"}
             required
-          />
+          /> */}
+          <LocalizationProvider
+            dateAdapter={AdapterDayjs}
+            name="dateOfBirth"
+
+          >
+            <DemoContainer components={['DatePicker']}>
+              <DatePicker
+                label={"Nascimento:"}
+                value={form.dateOfBirth}
+                onChange={setForm}
+                name="dateOfBirth"
+                required
+              />
+            </DemoContainer>
+          </LocalizationProvider>
           <FormControl sx={{ minWidth: 120 }} >
             <InputLabel id="demo-simple-select-label" >Espécie</InputLabel>
             <Select
